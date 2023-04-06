@@ -10,8 +10,9 @@ function getRandomNumber(min, max) {
 }
 
 getAllQuotes().then((dataFromJson) => {
-  const randomQuote = dataFromJson.quotes[getRandomNumber(0, dataFromJson.quotes.length)];
-  
+  const randomIndex = getRandomNumber(0, dataFromJson.quotes.length);
+  const randomQuote = dataFromJson.quotes[getRandomNumber(0, randomIndex)];
+
   const quote = `${randomQuote.quote}`;
   quoteElement.textContent = quote;
 
@@ -21,7 +22,8 @@ getAllQuotes().then((dataFromJson) => {
 
 setInterval(() => {
   getAllQuotes().then((dataFromJson) => {
-    const randomQuote = dataFromJson.quotes[getRandomNumber(0, dataFromJson.quotes.length)];
+    const randomIndex = getRandomNumber(0, dataFromJson.quotes.length);
+    const randomQuote = dataFromJson.quotes[getRandomNumber(0, randomIndex)];
 
     const quote = `${randomQuote.quote}`;
     quoteElement.textContent = quote;
